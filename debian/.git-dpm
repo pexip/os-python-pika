@@ -1,0 +1,11 @@
+# see git-dpm(1) from git-dpm package
+de39689cab64d0c9505636479632e9ae739f8e30
+de39689cab64d0c9505636479632e9ae739f8e30
+02aaec8506024857a5c0e715b122cbe0ecb78982
+02aaec8506024857a5c0e715b122cbe0ecb78982
+python-pika_0.10.0.orig.tar.gz
+a18c032bf7d2b47c6aaa0b17d6ec02c66b2d95a9
+178327
+debianTag="debian/%e%v"
+patchedTag="patched/%e%v"
+upstreamTag="upstream/%e%u"
