@@ -11,14 +11,14 @@ Build-Depends: debhelper (>= 9),
                python-nose,
                python-setuptools,
                python-sphinx | python3-sphinx,
-               python-tornado,
+#               python-tornado,
                python-twisted,
                python-yaml,
                python3-all,
                python3-nose,
                python3-setuptools,
-               python3-tornado,
-               python3-twisted,
+#               python3-tornado,
+#               python3-twisted,
                python3-yaml
 Standards-Version: 3.9.6
 X-Python-Version: >= 2.6
