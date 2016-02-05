@@ -4,9 +4,26 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
+export PYBUILD_NAME=pika
+export PYBUILD_TEST_ARGS={dir}/tests/unit/
+
 %:
-	dh $@ --with python2
+	dh $@ --with=python2,python3,sphinxdoc --buildsystem=pybuild
 
-override_dh_auto_install:
-	dh_auto_install $@
+override_dh_installchangelogs:
+	dh_installchangelogs docs/version_history.rst
 
+override_dh_auto_clean:
+	rm -rf docs/.build
+	dh_auto_clean
+
+override_dh_auto_build:
+	PYTHONPATH=. sphinx-build -b html -d docs/.build/.doctrees -N docs docs/.build/html
+	dh_auto_build
+
+override_dh_link:
+	rm $(CURDIR)/debian/python-pika-doc/usr/share/doc/python-pika-doc/html/_sources/version_history.txt
+	dh_link
+
+override_dh_compress:
+	dh_compress -X.py

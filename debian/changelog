@@ -1,5 +1,67 @@
-python-pika (0.9.13-1) precise; urgency=low
+python-pika (0.10.0-1) unstable; urgency=medium
 
-  * Initial release
+  * New upstream version (Closes: #796543)
+  * Update copyright years
+  * Add Python 3 support (Closes: #809315)
+  * Add documentation package python-pika-doc
+  * Bump Standards-Version to 3.9.6 (no changes)
+  * Register HTML documentation with doc-base
+  * Declare relationships between binary packages, add Breaks and
+    Replaces for older versions
+  * properly setup tests
+  * apply upstream patches for test errors
+    (debian/patches/0001-Fix-the-channel-tests.patch and
+    debian/patches/0002-Make-the-test-more-reliable-in-Python-3.5.patch)
 
- -- Colin Bradbury <colin.bradbury@gmail.com>  Mon, 01 July 2013 10:16:27 +0100
+ -- Jan Dittberner <jandd@debian.org>  Wed, 30 Dec 2015 14:25:06 +0100
+
+python-pika (0.9.14-1) unstable; urgency=medium
+
+  * New upstream version
+  * update debian/python-pika.docs, upstream renamed README.md to
+    README.rst
+  * upstream switched license to MPL 2.0, update debian/copyright
+  * install docs/version_history.rst as upstream changelog, add symlink to
+    original name
+
+ -- Jan Dittberner <jandd@debian.org>  Fri, 26 Sep 2014 20:23:33 +0200
+
+python-pika (0.9.13-2) unstable; urgency=medium
+
+  * repair debian/watch file
+  * debian/compat: bump to 9
+  * debian/control:
+    - bump Standards-Version to 3.9.5 (no changes)
+    - switch to pybuild, add dh-python to Build-Depends, add X-Python-Version
+    - bump debhelper version to (>= 9)
+    - run wrap-and-sort
+  * debian/rules:
+    - simplify rules to use pybuild defaults
+
+ -- Jan Dittberner <jandd@debian.org>  Sun, 23 Feb 2014 23:59:38 +0100
+
+python-pika (0.9.13-1) unstable; urgency=low
+
+  [ Thomas Bechtold ]
+  * New upstream release.
+  * Update debian/watch to match github tags.
+  * debian/control:
+    - Bump Standards-version to 3.9.4.
+    - Add python-twisted, python-tornado, python-yaml, python-nose,
+      python-mock and netbase to Build-Depends to be able to run the testsuite.
+  * debian/rules: Run testsuite.
+  * debian/python-pika.docs:
+    - Remove THANKS. No longer available.
+    - Remove ROADMAP. No longer available.
+    - Add docs/.
+
+  [ Jan Dittberner ]
+  * debian/control: canonical Vcs-Svn URL
+
+ -- Jan Dittberner <jandd@debian.org>  Thu, 11 Jul 2013 22:38:30 +0200
+
+python-pika (0.9.5-1) unstable; urgency=low
+
+  * Initial release. (Closes: #635891)
+
+ -- Jan Dittberner <jandd@debian.org>  Sat, 30 Jul 2011 11:54:54 +0200

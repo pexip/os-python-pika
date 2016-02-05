@@ -1,17 +1,67 @@
 Source: python-pika
 Section: python
 Priority: optional
-Maintainer: Pexip AS <packaging@pexip.com>
-Build-Depends: debhelper (>= 8.0.0), python-all (>= 2.6.6-3~), python-setuptools
-Standards-Version: 3.9.2
-Homepage: https://pika.readthedocs.org
+Maintainer: Jan Dittberner <jandd@debian.org>
+Uploaders: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Build-Depends: debhelper (>= 9),
+               dh-python,
+               netbase,
+               python-all,
+               python-mock,
+               python-nose,
+               python-setuptools,
+               python-sphinx | python3-sphinx,
+               python-tornado,
+               python-twisted,
+               python-yaml,
+               python3-all,
+               python3-nose,
+               python3-setuptools,
+               python3-tornado,
+               python3-twisted,
+               python3-yaml
+Standards-Version: 3.9.6
+X-Python-Version: >= 2.6
+X-Python3-Version: >= 3.4
+Homepage: http://pika.github.com/
+Vcs-Git: git://anonscm.debian.org/python-modules/packages/python-pika.git
+Vcs-Browser: https://anonscm.debian.org/cgit/python-modules/packages/python-pika.git
 XS-Pexip-Upstream: http://ftp.debian.org/debian/ stretch
 
 Package: python-pika
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}
-Description: Pika Python AMQP Client Library
- Pika is a pure-Python implementation of the AMQP 0-9-1 protocol that tries to
+Depends: ${misc:Depends}, ${python:Depends}
+Suggests: python-pika-doc (= ${binary:Version})
+Description: AMQP client library for Python 2
+ Pika is a pure-Python implementation of the AMQP-0-9-1 protocol that tries to
  stay fairly independent of the underlying network support library. Pika was
- developed primarily for use with RabbitMQ, but should also work with other
- AMQP 0-9-1 brokers.
+ developed primarily for use with RabitMQ, but also works with other
+ AMQP-0-9-1 brokers.
+ .
+ This is the Python 2 version of the library.
+
+Package: python3-pika
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Suggests: python-pika-doc (= ${binary:Version})
+Description: AMQP client library for Python 3
+ Pika is a pure-Python implementation of the AMQP-0-9-1 protocol that tries to
+ stay fairly independent of the underlying network support library. Pika was
+ developed primarily for use with RabitMQ, but also works with other
+ AMQP-0-9-1 brokers.
+ .
+ This is the Python 3 version of the library.
+
+Package: python-pika-doc
+Section: doc
+Architecture: all
+Depends: ${misc:Depends}, ${sphinxdoc:Depends}
+Breaks: python-pika (<< 0.10.0-1)
+Replaces: python-pika (<< 0.10.0-1)
+Description: AMQP client library documentation
+ Pika is a pure-Python implementation of the AMQP-0-9-1 protocol that tries to
+ stay fairly independent of the underlying network support library. Pika was
+ developed primarily for use with RabitMQ, but also works with other
+ AMQP-0-9-1 brokers.
+ .
+ This is the library documentation.
