@@ -1,3 +1,9 @@
+python-pika (0.10.0-1pexip2) pexip; urgency=low
+
+  * No-change rebuild
+
+ -- John-Mark Bell <jmb@pexip.com>  Tue, 18 Apr 2017 07:52:31 +0100
+
 python-pika (0.10.0-1pexip1) UNRELEASED; urgency=low
 
   * debian/control: Remove unwanted dependencies
