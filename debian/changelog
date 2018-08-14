@@ -1,3 +1,76 @@
+python-pika (0.11.0-4) unstable; urgency=medium
+
+  * Team upload.
+  * Add breaks+replaces python-pika (<< 0.11.0-3~). (Closes: #903801)
+
+ -- Thomas Goirand <zigo@debian.org>  Tue, 14 Aug 2018 14:02:28 +0000
+
+python-pika (0.11.0-3) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Convert git repository from git-dpm to gbp layout
+
+  [ Jan Dittberner ]
+  * Fix "both ship /usr/share/doc/python-pika/README.rst" remove
+    debian/python-pika.docs and debian/python3-pika.docs to avoid installing
+    README.rst that is in python-pika-doc too (Closes: #903801)
+
+ -- Jan Dittberner <jandd@debian.org>  Sun, 12 Aug 2018 11:24:46 +0200
+
+python-pika (0.11.0-2) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Ondřej Nový ]
+  * d/control: Set Vcs-* to salsa.debian.org
+  * d/changelog: Remove trailing whitespaces
+  * d/tests: Use AUTOPKGTEST_TMP instead of ADTTMP
+  * d/control: Remove ancient X-Python-Version field
+  * d/control: Remove ancient X-Python3-Version field
+
+  [ Michal Arbet ]
+  * d/control: Bump debhelper version
+  * d/compat: Bump debhelper compatibility level
+  * Add 0001-fix-python3.7-async-reserver-keyword.patch
+  * d/control: Update Homepage
+  * d/rules: Remove removal of version_history.rst.txt
+
+  [ Thomas Goirand ]
+  * Ran wrap-and-sort -bast.
+  * Run the doc build in the dh_sphinxdoc target, and install docs directly in
+    the correct location rather than copying it later on.
+  * Restored sanity in debian/changelog and removed unreleased changelog entry
+    for version 0.10.0-2 that was never uploaded.
+
+ -- Thomas Goirand <zigo@debian.org>  Wed, 11 Jul 2018 13:03:44 +0000
+
+python-pika (0.11.0-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release (0.11.0)
+  * Update Homepage in debian/control
+  * Clean *.egg-info/*
+  * Build-depend on python3-sphinx, not python-sphinx
+  * Bump Standards-Version from 4.0.0 to 4.1.0 (no change required)
+  * Update debian/copyright Format: URL
+
+ -- Christopher Hoskin <mans0954@debian.org>  Wed, 27 Sep 2017 04:39:47 +0100
+
+python-pika (0.10.0-3) unstable; urgency=medium
+
+  * Team upload.
+  * Fix "python-pika FTBFS: rm: cannot remove version_history.txt: No
+    such file or directory" filename now version_history.rst.txt (Closes:
+    #867990)
+  * Fix spelling in debian/python-pika-doc.doc-base
+  * Add autopkgtests
+  * Bump standards version from 3.9.6 to 4.0.0 (no change required)
+
+  [ Ondřej Nový ]
+  * Fixed VCS URL (https)
+
+ -- Christopher Hoskin <mans0954@debian.org>  Fri, 28 Jul 2017 04:48:19 +0100
+
 python-pika (0.10.0-1) unstable; urgency=medium
 
   * New upstream version (Closes: #796543)
