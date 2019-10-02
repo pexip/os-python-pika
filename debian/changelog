@@ -1,3 +1,12 @@
+python-pika (0.10.0-1pexip3) UNRELEASED; urgency=medium
+
+  [ Gregorio Di Stefano ]
+  * Bump for python3 support
+
+  [ pexbot ]
+
+ -- Gregorio Di Stefano <gregorio@pexip.com>  Wed, 02 Oct 2019 15:09:03 +0000
+
 python-pika (0.10.0-1pexip2) pexip; urgency=low
 
   * No-change rebuild
