@@ -26,7 +26,7 @@ X-Python3-Version: >= 3.4
 Homepage: http://pika.github.com/
 Vcs-Git: git://anonscm.debian.org/python-modules/packages/python-pika.git
 Vcs-Browser: https://anonscm.debian.org/cgit/python-modules/packages/python-pika.git
-XS-Pexip-Upstream: http://ftp.debian.org/debian/ stretch
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ buster
 
 Package: python-pika
 Architecture: all
