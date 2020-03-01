@@ -1,2 +1,1 @@
-0001-Fix-the-channel-tests.patch
-0002-Make-the-test-more-reliable-in-Python-3.5.patch
+0001-fix-python3.7-async-reserver-keyword.patch

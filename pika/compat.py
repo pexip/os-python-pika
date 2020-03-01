@@ -1,5 +1,5 @@
+import os
 import sys as _sys
-
 
 PY2 = _sys.version_info < (3,)
 PY3 = not PY2
@@ -7,7 +7,8 @@ PY3 = not PY2
 
 if not PY2:
     # these were moved around for Python 3
-    from urllib.parse import unquote as url_unquote, urlencode
+    from urllib.parse import (quote as url_quote, unquote as url_unquote,
+                              urlencode)
 
     # Python 3 does not have basestring anymore; we include
     # *only* the str here as this is used for textual data.
@@ -46,6 +47,24 @@ if not PY2:
         """
         return list(dct.values())
 
+    def dict_iteritems(dct):
+        """
+        Returns an iterator of items (key/value pairs) of a dictionary
+
+        dict.items returns a view that works like .items in Python 2
+        *except* any modifications in the dictionary will be visible
+        (and will cause errors if the view is being iterated over while
+        it is modified).
+        """
+        return dct.items()
+
+    def dict_itervalues(dct):
+        """
+        :param dict dct:
+        :returns: an iterator of the values of a dictionary
+        """
+        return dct.values()
+
     def byte(*args):
         """
         This is the same as Python 2 `chr(n)` for bytes in Python 3
@@ -73,8 +92,10 @@ if not PY2:
 
         return str(value)
 
+    def is_integer(value):
+        return isinstance(value, int)
 else:
-    from urllib import unquote as url_unquote, urlencode
+    from urllib import quote as url_quote, unquote as url_unquote, urlencode
 
     basestring = basestring
     str_or_bytes = basestring
@@ -82,6 +103,8 @@ else:
     unicode_type = unicode
     dictkeys = dict.keys
     dictvalues = dict.values
+    dict_iteritems = dict.iteritems
+    dict_itervalues = dict.itervalues
     byte = chr
     long = long
 
@@ -97,9 +120,15 @@ else:
         except UnicodeEncodeError:
             return str(value.encode('utf-8'))
 
+    def is_integer(value):
+        return isinstance(value, (int, long))
 
 def as_bytes(value):
     if not isinstance(value, bytes):
         return value.encode('UTF-8')
     return value
 
+
+HAVE_SIGNAL = os.name == 'posix'
+
+EINTR_IS_EXPOSED = _sys.version_info[:2] <= (3,4)
