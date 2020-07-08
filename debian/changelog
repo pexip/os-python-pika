@@ -1,6 +1,7 @@
 python-pika (0.11.0-4pexip1) pexip; urgency=medium
 
   * Migrate to Buster
+  * reinstate python3-twisted dependancy
 
  -- Vincent Sanders <vince@pexip.com>  Sun, 01 Mar 2020 15:42:59 +0000
 
