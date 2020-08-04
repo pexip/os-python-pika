@@ -1,0 +1,24 @@
+diff --git a/pika/channel.py b/pika/channel.py
+index 05ef685..a222e59 100644
+--- a/pika/channel.py
++++ b/pika/channel.py
+@@ -620,7 +620,8 @@ class Channel(object):
+                          auto_delete=False,
+                          internal=False,
+                          nowait=False,
+-                         arguments=None):
++                         arguments=None,
++                         type=None):
+         """This method creates an exchange if it does not already exist, and if
+         the exchange exists, verifies that it is of the correct and expected
+         class.
+@@ -648,6 +649,9 @@ class Channel(object):
+         """
+         self._validate_channel_and_callback(callback)
+ 
++        if type is not None:
++            exchange_type = type
++
+         return self._rpc(spec.Exchange.Declare(0, exchange, exchange_type,
+                                                passive, durable, auto_delete,
+                                                internal, nowait,

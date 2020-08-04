@@ -1,1 +1,2 @@
 0001-fix-python3.7-async-reserver-keyword.patch
+0002-support_old_exchange_declare.patch
