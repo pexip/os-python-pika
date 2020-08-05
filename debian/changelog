@@ -1,3 +1,9 @@
+python-pika (0.11.0-4pexip4) pexip; urgency=medium
+
+  * Backwards compatibility for BlockingChannel.exchange_declare()
+
+ -- John-Mark Bell <jmb@pexip.com>  Wed, 05 Aug 2020 11:26:47 +0100
+
 python-pika (0.11.0-4pexip3) pexip; urgency=medium
 
   * Hack support back in for older users of the

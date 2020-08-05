@@ -22,3 +22,26 @@ index 05ef685..a222e59 100644
          return self._rpc(spec.Exchange.Declare(0, exchange, exchange_type,
                                                 passive, durable, auto_delete,
                                                 internal, nowait,
+diff --git a/pika/adapters/blocking_connection.py b/pika/adapters/blocking_connection.py
+index acc21c1..ceb1bc3 100644
+--- a/pika/adapters/blocking_connection.py
++++ b/pika/adapters/blocking_connection.py
+@@ -2236,7 +2236,7 @@ class BlockingChannel(object):
+     def exchange_declare(self, exchange=None,
+                          exchange_type='direct', passive=False, durable=False,
+                          auto_delete=False, internal=False,
+-                         arguments=None):
++                         arguments=None, type=None):
+         """This method creates an exchange if it does not already exist, and if
+         the exchange exists, verifies that it is of the correct and expected
+         class.
+@@ -2262,6 +2262,9 @@ class BlockingChannel(object):
+           `spec.Exchange.DeclareOk`
+ 
+         """
++        if type is not None:
++            exchange_type = type
++
+         with _CallbackResult(
+             self._MethodFrameCallbackResultArgs) as declare_ok_result:
+             self._impl.exchange_declare(
