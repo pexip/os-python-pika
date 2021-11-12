@@ -1,0 +1,8 @@
+Document: python-pika-doc
+Title: Pika AMQP Client Library Documentation
+Abstract: This is the documentation for the pika AMQP client library.
+Section: Programming/Python
+
+Format: HTML
+Index: /usr/share/doc/python-pika-doc/html/index.html
+Files: /usr/share/doc/python-pika-doc/html/*.html

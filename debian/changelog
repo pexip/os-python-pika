@@ -1,0 +1,187 @@
+python-pika (1.2.0-1) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Ondřej Nový ]
+  * Bump Standards-Version to 4.4.1.
+  * d/control: Update Vcs-* fields with new Debian Python Team Salsa
+    layout.
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+  [ Sandro Tosi ]
+  * Use the new Debian Python Team contact name and address
+
+  [ Debian Janitor ]
+  * Apply multi-arch hints.
+    + python-pika-doc: Add Multi-Arch: foreign.
+
+  [ Sergio de Almeida Cipriano Junior ]
+  * d/watch: Update regex to match tags
+  * Remove d/p/0001-fix-python3.7-async-reserver-keyword.patch.
+    It is no longer necessary in version 1.2.0.
+  * d/control: Add python3-mock as dependency
+  * d/control: Bump Standards-Version from 4.4.1 to 4.6.1
+  * d/control: Bump debhelper-compat from 12 to 13
+  * d/control: Add Rules-Requires-Root
+  * New upstream version 1.2.0 (Closes: #900808)
+
+  [ Sergio Durigan Junior ]
+  * d/watch: Fix filenamemangle.
+  * d/control: Fix Standards-Version to 4.6.0.1.
+
+ -- Sergio Durigan Junior <sergiodj@debian.org>  Thu, 11 Nov 2021 19:00:39 -0500
+
+python-pika (0.11.0-5) unstable; urgency=medium
+
+  * Team upload.
+  * Use debhelper-compat instead of debian/compat.
+  * Drop Python 2 support (Closes: #938024).
+  * Bump debhelper compat level to 12.
+  * Bump standards version to 4.4.0.
+  * Enable autopkgtest-pkg-python testsuite instead of own one.
+
+ -- Ondřej Nový <onovy@debian.org>  Fri, 13 Sep 2019 10:35:10 +0200
+
+python-pika (0.11.0-4) unstable; urgency=medium
+
+  * Team upload.
+  * Add breaks+replaces python-pika (<< 0.11.0-3~). (Closes: #903801)
+
+ -- Thomas Goirand <zigo@debian.org>  Tue, 14 Aug 2018 14:02:28 +0000
+
+python-pika (0.11.0-3) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Convert git repository from git-dpm to gbp layout
+
+  [ Jan Dittberner ]
+  * Fix "both ship /usr/share/doc/python-pika/README.rst" remove
+    debian/python-pika.docs and debian/python3-pika.docs to avoid installing
+    README.rst that is in python-pika-doc too (Closes: #903801)
+
+ -- Jan Dittberner <jandd@debian.org>  Sun, 12 Aug 2018 11:24:46 +0200
+
+python-pika (0.11.0-2) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Ondřej Nový ]
+  * d/control: Set Vcs-* to salsa.debian.org
+  * d/changelog: Remove trailing whitespaces
+  * d/tests: Use AUTOPKGTEST_TMP instead of ADTTMP
+  * d/control: Remove ancient X-Python-Version field
+  * d/control: Remove ancient X-Python3-Version field
+
+  [ Michal Arbet ]
+  * d/control: Bump debhelper version
+  * d/compat: Bump debhelper compatibility level
+  * Add 0001-fix-python3.7-async-reserver-keyword.patch
+  * d/control: Update Homepage
+  * d/rules: Remove removal of version_history.rst.txt
+
+  [ Thomas Goirand ]
+  * Ran wrap-and-sort -bast.
+  * Run the doc build in the dh_sphinxdoc target, and install docs directly in
+    the correct location rather than copying it later on.
+  * Restored sanity in debian/changelog and removed unreleased changelog entry
+    for version 0.10.0-2 that was never uploaded.
+
+ -- Thomas Goirand <zigo@debian.org>  Wed, 11 Jul 2018 13:03:44 +0000
+
+python-pika (0.11.0-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release (0.11.0)
+  * Update Homepage in debian/control
+  * Clean *.egg-info/*
+  * Build-depend on python3-sphinx, not python-sphinx
+  * Bump Standards-Version from 4.0.0 to 4.1.0 (no change required)
+  * Update debian/copyright Format: URL
+
+ -- Christopher Hoskin <mans0954@debian.org>  Wed, 27 Sep 2017 04:39:47 +0100
+
+python-pika (0.10.0-3) unstable; urgency=medium
+
+  * Team upload.
+  * Fix "python-pika FTBFS: rm: cannot remove version_history.txt: No
+    such file or directory" filename now version_history.rst.txt (Closes:
+    #867990)
+  * Fix spelling in debian/python-pika-doc.doc-base
+  * Add autopkgtests
+  * Bump standards version from 3.9.6 to 4.0.0 (no change required)
+
+  [ Ondřej Nový ]
+  * Fixed VCS URL (https)
+
+ -- Christopher Hoskin <mans0954@debian.org>  Fri, 28 Jul 2017 04:48:19 +0100
+
+python-pika (0.10.0-1) unstable; urgency=medium
+
+  * New upstream version (Closes: #796543)
+  * Update copyright years
+  * Add Python 3 support (Closes: #809315)
+  * Add documentation package python-pika-doc
+  * Bump Standards-Version to 3.9.6 (no changes)
+  * Register HTML documentation with doc-base
+  * Declare relationships between binary packages, add Breaks and
+    Replaces for older versions
+  * properly setup tests
+  * apply upstream patches for test errors
+    (debian/patches/0001-Fix-the-channel-tests.patch and
+    debian/patches/0002-Make-the-test-more-reliable-in-Python-3.5.patch)
+
+ -- Jan Dittberner <jandd@debian.org>  Wed, 30 Dec 2015 14:25:06 +0100
+
+python-pika (0.9.14-1) unstable; urgency=medium
+
+  * New upstream version
+  * update debian/python-pika.docs, upstream renamed README.md to
+    README.rst
+  * upstream switched license to MPL 2.0, update debian/copyright
+  * install docs/version_history.rst as upstream changelog, add symlink to
+    original name
+
+ -- Jan Dittberner <jandd@debian.org>  Fri, 26 Sep 2014 20:23:33 +0200
+
+python-pika (0.9.13-2) unstable; urgency=medium
+
+  * repair debian/watch file
+  * debian/compat: bump to 9
+  * debian/control:
+    - bump Standards-Version to 3.9.5 (no changes)
+    - switch to pybuild, add dh-python to Build-Depends, add X-Python-Version
+    - bump debhelper version to (>= 9)
+    - run wrap-and-sort
+  * debian/rules:
+    - simplify rules to use pybuild defaults
+
+ -- Jan Dittberner <jandd@debian.org>  Sun, 23 Feb 2014 23:59:38 +0100
+
+python-pika (0.9.13-1) unstable; urgency=low
+
+  [ Thomas Bechtold ]
+  * New upstream release.
+  * Update debian/watch to match github tags.
+  * debian/control:
+    - Bump Standards-version to 3.9.4.
+    - Add python-twisted, python-tornado, python-yaml, python-nose,
+      python-mock and netbase to Build-Depends to be able to run the testsuite.
+  * debian/rules: Run testsuite.
+  * debian/python-pika.docs:
+    - Remove THANKS. No longer available.
+    - Remove ROADMAP. No longer available.
+    - Add docs/.
+
+  [ Jan Dittberner ]
+  * debian/control: canonical Vcs-Svn URL
+
+ -- Jan Dittberner <jandd@debian.org>  Thu, 11 Jul 2013 22:38:30 +0200
+
+python-pika (0.9.5-1) unstable; urgency=low
+
+  * Initial release. (Closes: #635891)
+
+ -- Jan Dittberner <jandd@debian.org>  Sat, 30 Jul 2011 11:54:54 +0200

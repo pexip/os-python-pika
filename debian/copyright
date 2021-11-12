@@ -1,0 +1,45 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: pika
+Upstream-Contact: Gavin M. Roy <gmr@myyearbook.com>
+Source: https://github.com/pika/pika
+Comment:
+ Pika is licensed under the MPLv2. If you have any questions regarding
+ licensing, please contact the RabbitMQ team at <info@rabbitmq.com>.
+
+Files: *
+Copyright: 2009-2015 Gavin M. Roy
+License: MPL-2.0
+
+Files: debian/*
+Copyright: 2011-2015 Jan Dittberner
+License: GPL-3+
+
+License: GPL-3+
+ This program is free software; you can redistribute it
+ and/or modify it under the terms of the GNU General Public
+ License as published by the Free Software Foundation; either
+ version 3 of the License, or (at your option) any later
+ version.
+ .
+ This program is distributed in the hope that it will be
+ useful, but WITHOUT ANY WARRANTY; without even the implied
+ warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+ PURPOSE.  See the GNU General Public License for more
+ details.
+ .
+ You should have received a copy of the GNU General Public
+ License along with this package; if not, write to the Free
+ Software Foundation, Inc., 51 Franklin St, Fifth Floor,
+ Boston, MA  02110-1301 USA
+ .
+ On Debian systems, the full text of the GNU General Public
+ License version 2 can be found in the file
+ `/usr/share/common-licenses/GPL-3'.
+
+License: MPL-2.0
+ This Source Code Form is subject to the terms of the Mozilla Public License,
+ v. 2.0. If a copy of the MPL was not distributed with this file,
+ You can obtain one at http://mozilla.org/MPL/2.0/.
+ .
+ On Debian-based systems the full text of the Mozilla Public License version
+ 2.0 can be found at /usr/share/common-licenses/MPL-2.0.

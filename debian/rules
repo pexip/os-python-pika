@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export PYBUILD_NAME=pika
+export PYBUILD_TEST_ARGS={dir}/tests/unit/
+
+%:
+	dh $@ --with=python3,sphinxdoc --buildsystem=pybuild
+
+override_dh_installchangelogs:
+	dh_installchangelogs docs/version_history.rst
+
+override_dh_auto_clean:
+	rm -rf docs/.build
+	dh_auto_clean
+
+override_dh_sphinxdoc:
+	PYTHONPATH=. PYTHON=python3 python3 -m sphinx -b html -d docs/.build/.doctrees -N docs $(CURDIR)/debian/python-pika-doc/usr/share/doc/python-pika-doc/html
+	dh_sphinxdoc
+
+override_dh_link:
+	dh_link
+
+override_dh_compress:
+	dh_compress -X.py
