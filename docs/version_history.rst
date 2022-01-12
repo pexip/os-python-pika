@@ -1,15 +1,150 @@
 Version History
 ===============
 
-Next Release
-------------
+1.2.0 2021-02-04
+----------------
+
+`GitHub milestone <https://github.com/pika/pika/milestone/17?closed=1>`_
+
+1.1.0 2019-07-16
+----------------
+
+`GitHub milestone <https://github.com/pika/pika/milestone/16?closed=1>`_
+
+1.0.1 2019-04-12
+----------------
+
+`GitHub milestone <https://github.com/pika/pika/milestone/15?closed=1>`_
+
+- API docstring updates
+- Twisted adapter: Add basic_consume Deferred to the call list (`PR <https://github.com/pika/pika/pull/1202>`_)
+
+1.0.0 2019-03-26
+----------------
+
+`GitHub milestone <https://github.com/pika/pika/milestone/8?closed=1>`_
+
+- ``AsyncioConnection``, ``TornadoConnection`` and ``TwistedProtocolConnection`` are no longer auto-imported (`PR <https://github.com/pika/pika/pull/1129>`_)
+- ``BlockingConnection.consume`` now returns ``(None, None, None)`` when inactivity timeout is reached (`PR <https://github.com/pika/pika/pull/901>`_)
+- Python 3.7 support (`Issue <https://github.com/pika/pika/issues/1107>`_)
+- ``all_channels`` parameter of the ``Channel.basic_qos`` method renamed to ``global_qos``
+- ``global_`` parameter of the ``Basic.Qos`` spec class renamed to ``global_qos``
+- **NOTE:** ``heartbeat_interval`` is removed, use ``heartbeat`` instead.
+- **NOTE:** The `backpressure_detection` option of `ConnectionParameters` and `URLParameters` property is REMOVED in favor of `Connection.Blocked` and `Connection.Unblocked`. See `Connection.add_on_connection_blocked_callback`.
+- **NOTE:** The legacy ``basic_publish`` method is removed, and ``publish`` renamed to ``basic_publish``
+- **NOTE**: The signature of the following methods has changed from Pika 0.13.0. In general, the callback parameter that indicates completion of the method has been moved to the end of the parameter list to be consistent with other parts of Pika's API and with other libraries in general.
+
+**IMPORTANT**: The signature of the following methods has changed from Pika 0.13.0. In general, the callback parameter that indicates completion of the method has been moved to the end of the parameter list to be consistent with other parts of Pika's API and with other libraries in general.
+
+- ``basic_cancel``
+- ``basic_consume``
+- ``basic_get``
+- ``basic_qos``
+- ``basic_recover``
+- ``confirm_delivery``
+- ``exchange_bind``
+- ``exchange_declare``
+- ``exchange_delete``
+- ``exchange_unbind``
+- ``flow``
+- ``queue_bind``
+- ``queue_declare``
+- ``queue_delete``
+- ``queue_purge``
+- ``queue_unbind``
+
+**IMPORTANT**: When specifying TLS / SSL options, the ``SSLOptions`` class must be used, and a ``dict`` is no longer supported.
+
+0.13.1 2019-02-04
+-----------------
+
+`GitHub milestone <https://github.com/pika/pika/milestone/14>`_
+
+0.13.0 2019-01-17
+-----------------
+
+`GitHub milestone <https://github.com/pika/pika/milestone/13>`_
+
+0.12.0 2018-06-19
+-----------------
+
+`GitHub milestone <https://github.com/pika/pika/milestone/12>`_
+
+This is an interim release prior to version `1.0.0`. It includes the following backported pull requests and commits from the `master` branch:
+
+- `PR #901 <https://github.com/pika/pika/pull/901>`_
+- `PR #908 <https://github.com/pika/pika/pull/908>`_
+- `PR #910 <https://github.com/pika/pika/pull/910>`_
+- `PR #918 <https://github.com/pika/pika/pull/918>`_
+- `PR #920 <https://github.com/pika/pika/pull/920>`_
+- `PR #924 <https://github.com/pika/pika/pull/924>`_
+- `PR #937 <https://github.com/pika/pika/pull/937>`_
+- `PR #938 <https://github.com/pika/pika/pull/938>`_
+- `PR #933 <https://github.com/pika/pika/pull/933>`_
+- `PR #940 <https://github.com/pika/pika/pull/940>`_
+- `PR #932 <https://github.com/pika/pika/pull/932>`_
+- `PR #928 <https://github.com/pika/pika/pull/928>`_
+- `PR #934 <https://github.com/pika/pika/pull/934>`_
+- `PR #915 <https://github.com/pika/pika/pull/915>`_
+- `PR #946 <https://github.com/pika/pika/pull/946>`_
+- `PR #947 <https://github.com/pika/pika/pull/947>`_
+- `PR #952 <https://github.com/pika/pika/pull/952>`_
+- `PR #956 <https://github.com/pika/pika/pull/956>`_
+- `PR #966 <https://github.com/pika/pika/pull/966>`_
+- `PR #975 <https://github.com/pika/pika/pull/975>`_
+- `PR #978 <https://github.com/pika/pika/pull/978>`_
+- `PR #981 <https://github.com/pika/pika/pull/981>`_
+- `PR #994 <https://github.com/pika/pika/pull/994>`_
+- `PR #1007 <https://github.com/pika/pika/pull/1007>`_
+- `PR #1045 <https://github.com/pika/pika/pull/1045>`_ (manually backported)
+- `PR #1011 <https://github.com/pika/pika/pull/1011>`_
+
+Commits:
+
+Travis CI fail fast - 3f0e739
+
+New features:
+
+``BlockingConnection.consume`` now returns ``(None, None, None)`` when inactivity timeout is reached (`PR <https://github.com/pika/pika/pull/901>`_)
+
+``BlockingConnection`` now supports the ``add_callback_threadsafe`` method which allows a function to be executed correctly on the IO loop thread. The main use-case for this is as follows:
+
+- Application sets up a thread for ``BlockingConnection`` and calls ``basic_consume`` on it
+- When a message is received, work is done on another thread
+- When the work is done, the worker uses ``connection.add_callback_threadsafe`` to call the ``basic_ack`` method on the channel instance.
+
+Please see ``examples/basic_consumer_threaded.py`` for an example. As always, ``SelectConnection`` and a fully async consumer/publisher is the preferred method of using Pika.
+
+Heartbeats are now sent at an interval equal to 1/2 of the negotiated idle connection timeout. RabbitMQ's default timeout value is 60 seconds, so heartbeats will be sent at a 30 second interval. In addition, Pika's check for an idle connection will be done at an interval equal to the timeout value plus 5 seconds to allow for delays. This results in an interval of 65 seconds by default.
+
+0.11.2 2017-11-30
+-----------------
+
+`GitHub milestone <https://github.com/pika/pika/milestone/11>`_
+
+`0.11.2 <https://github.com/pika/pika/compare/0.11.1...0.11.2>`_
+
+- Remove `+` character from platform releases string (`PR <https://github.com/pika/pika/pull/895>`_)
+
+0.11.1 2017-11-27
+-----------------
+
+`GitHub milestone <https://github.com/pika/pika/milestone/10>`_
+
+`0.11.1 <https://github.com/pika/pika/compare/0.11.0...0.11.1>`_
+
+- Fix `BlockingConnection` to ensure event loop exits (`PR <https://github.com/pika/pika/pull/887>`_)
+- Heartbeat timeouts will use the client value if specified (`PR <https://github.com/pika/pika/pull/874>`_)
+- Allow setting some common TCP options (`PR <https://github.com/pika/pika/pull/880>`_)
+- Errors when decoding Unicode are ignored (`PR <https://github.com/pika/pika/pull/890>`_)
+- Fix large number encoding (`PR <https://github.com/pika/pika/pull/888>`_)
 
 0.11.0 2017-07-29
 -----------------
 
-`0.11.0 <https://github.com/pika/pika/compare/0.10.0...0.11.0>`_
-
 `GitHub milestone <https://github.com/pika/pika/milestone/9>`_
+
+`0.11.0 <https://github.com/pika/pika/compare/0.10.0...0.11.0>`_
 
  - Simplify Travis CI configuration for OS X.
  - Add `asyncio` connection adapter for Python 3.4 and newer.
@@ -44,7 +179,7 @@ Next Release
    deprecated. pika.connection.Parameters.frame_max property setter now raises
    the standard `ValueError` exception when the value is out of bounds.
  - Removed deprecated parameter `type` in `Channel.exchange_declare` and
-   `BlockingChannel.exchnage_declare` in favor of the `exchange_type` arg that
+   `BlockingChannel.exchange_declare` in favor of the `exchange_type` arg that
    doesn't overshadow the builtin `type` keyword.
  - Channel.close() on OPENING channel transitions it to CLOSING instead of
    raising ChannelClosed.
@@ -65,9 +200,9 @@ Next Release
 
 `0.10.0 <https://github.com/pika/pika/compare/0.9.14...0.10.0>`_
 
- - LibevConnection: Fixed dict chgd size during iteration (Michael Laing)
- - SelectConnection: Fixed KeyError exceptions in IOLoop timeout executions (Shinji Suzuki)
- - BlockingConnection: Add support to make BlockingConnection a Context Manager (@reddec)
+ - a9bf96d - LibevConnection: Fixed dict chgd size during iteration (Michael Laing)
+ - 388c55d - SelectConnection: Fixed KeyError exceptions in IOLoop timeout executions (Shinji Suzuki)
+ - 4780de3 - BlockingConnection: Add support to make BlockingConnection a Context Manager (@reddec)
 
 0.10.0b2 2015-07-15
 -------------------
@@ -88,14 +223,14 @@ High-level summary of notable changes:
   adapter.
 - Non-backward-compatible changes in `Channel.add_on_return_callback` callback's
   signature.
-- The `AsynchoreConnection` adapter was retired
+- The `AsyncoreConnection` adapter was retired
 
 **Details**
 
 Python 3.x: this release introduces python 3.x support. Tested on Python 3.3
 and 3.4.
 
-`AsynchoreConnection`: Retired this legacy adapter to reduce maintenance burden;
+`AsyncoreConnection`: Retired this legacy adapter to reduce maintenance burden;
 the recommended replacement is the `SelectConnection` adapter.
 
 `SelectConnection`: ioloop was refactored for compatibility with other ioloops.
@@ -105,7 +240,7 @@ parameters channel, method, properties, and body instead of a tuple of those
 values for congruence with other similar callbacks.
 
 `BlockingConnection`: This adapter underwent a makeover under the hood and
-gained significant performance improvements as well as ehnanced timer
+gained significant performance improvements as well as enhanced timer
 resolution. It is now implemented as a client of the `SelectConnection` adapter.
 
 Below is an overview of the `BlockingConnection` and `BlockingChannel` API
@@ -249,7 +384,7 @@ changes:
  - d235989 - Be more specific when calling getaddrinfo (Gavin M. Roy)
  - b5d1b31 - Reflect the method name change in pika.callback (Gavin M. Roy)
  - df7d3b7 - Cleanup BlockingConnection in a few places (Gavin M. Roy)
- - cd98e1c - Rename method due to use in BlockingConnection (Gavin M. Roy)
+ - cd99e1c - Rename method due to use in BlockingConnection (Gavin M. Roy)
  - 7e0d1b3 - Use google style with yapf instead of pep8 (Gavin M. Roy)
  - 7dc9bab - Refactor socket writing to not use sendall #481 (Gavin M. Roy)
  - 4838789 - Dont log the fd #521 (Gavin M. Roy)
@@ -289,7 +424,6 @@ changes:
  - 765139e - Lower default TIMEOUT to 0.01 (bra-fsn)
  - 6cc22a5 - Fix confirmation on reconnects (bra-fsn)
  - f4faf0a - asynchronous publisher and subscriber examples refactored to follow the StepDown rule (Riccardo Cirimelli)
-
 
 0.9.14 - 2014-07-11
 -------------------

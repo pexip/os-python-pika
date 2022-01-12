@@ -1,27 +1,21 @@
-__version__ = '0.11.0'
+__version__ = '1.2.0'
 
 import logging
-try:
-    # not available in python 2.6
-    from logging import NullHandler
-except ImportError:
 
-    class NullHandler(logging.Handler):
+# Add NullHandler before importing Pika modules to prevent logging warnings
+logging.getLogger(__name__).addHandler(logging.NullHandler())
 
-        def emit(self, record):
-            pass
-
-# Add NullHandler to prevent logging warnings
-logging.getLogger(__name__).addHandler(NullHandler())
+# pylint: disable=C0413
 
 from pika.connection import ConnectionParameters
 from pika.connection import URLParameters
+from pika.connection import SSLOptions
 from pika.credentials import PlainCredentials
 from pika.spec import BasicProperties
 
+from pika import adapters
 from pika.adapters import BaseConnection
 from pika.adapters import BlockingConnection
 from pika.adapters import SelectConnection
-from pika.adapters import TornadoConnection
-from pika.adapters import TwistedConnection
-from pika.adapters import LibevConnection
+
+from pika.adapters.utils.connection_workflow import AMQPConnectionWorkflow

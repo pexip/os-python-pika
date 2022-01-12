@@ -1,23 +1,9 @@
-"""
-Tests for pika.callback
-
-"""
-
-try:
-    import mock
-except:
-    from unittest import mock
-
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
+import unittest
 
 from pika import amqp_object
 
 
 class AMQPObjectTests(unittest.TestCase):
-
     def test_base_name(self):
         self.assertEqual(amqp_object.AMQPObject().NAME, 'AMQPObject')
 
@@ -31,15 +17,29 @@ class AMQPObjectTests(unittest.TestCase):
         setattr(obj, 'baz', 'qux')
         self.assertEqual(repr(obj), "<AMQPObject(['baz=qux', 'foo=bar'])>")
 
+    def test_equality(self):
+        a = amqp_object.AMQPObject()
+        b = amqp_object.AMQPObject()
+        self.assertEqual(a, b)
+
+        setattr(a, "a_property", "test")
+        self.assertNotEqual(a, b)
+
+        setattr(b, "a_property", "test")
+        self.assertEqual(a, b)
+
 
 class ClassTests(unittest.TestCase):
-
     def test_base_name(self):
         self.assertEqual(amqp_object.Class().NAME, 'Unextended Class')
 
+    def test_equality(self):
+        a = amqp_object.Class()
+        b = amqp_object.Class()
+        self.assertEqual(a, b)
+
 
 class MethodTests(unittest.TestCase):
-
     def test_base_name(self):
         self.assertEqual(amqp_object.Method().NAME, 'Unextended Method')
 
@@ -73,6 +73,6 @@ class MethodTests(unittest.TestCase):
 
 
 class PropertiesTests(unittest.TestCase):
-
     def test_base_name(self):
-        self.assertEqual(amqp_object.Properties().NAME, 'Unextended Properties')
+        self.assertEqual(amqp_object.Properties().NAME,
+                         'Unextended Properties')
