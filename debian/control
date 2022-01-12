@@ -6,7 +6,7 @@ XSBC-Pexip-Original-Maintainer: Jan Dittberner <jandd@debian.org>
 XSBC-Pexip-Original-Uploaders:
  Debian Python Team <team+python@tracker.debian.org>
 Build-Depends:
- debhelper-compat (= 13),
+ debhelper-compat (= 12),
  dh-python,
  netbase,
  python3-all,
