@@ -1,3 +1,50 @@
+python-pika (1.2.0-1) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Ondřej Nový ]
+  * Bump Standards-Version to 4.4.1.
+  * d/control: Update Vcs-* fields with new Debian Python Team Salsa
+    layout.
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+  [ Sandro Tosi ]
+  * Use the new Debian Python Team contact name and address
+
+  [ Debian Janitor ]
+  * Apply multi-arch hints.
+    + python-pika-doc: Add Multi-Arch: foreign.
+
+  [ Sergio de Almeida Cipriano Junior ]
+  * d/watch: Update regex to match tags
+  * Remove d/p/0001-fix-python3.7-async-reserver-keyword.patch.
+    It is no longer necessary in version 1.2.0.
+  * d/control: Add python3-mock as dependency
+  * d/control: Bump Standards-Version from 4.4.1 to 4.6.1
+  * d/control: Bump debhelper-compat from 12 to 13
+  * d/control: Add Rules-Requires-Root
+  * New upstream version 1.2.0 (Closes: #900808)
+
+  [ Sergio Durigan Junior ]
+  * d/watch: Fix filenamemangle.
+  * d/control: Fix Standards-Version to 4.6.0.1.
+
+ -- Sergio Durigan Junior <sergiodj@debian.org>  Thu, 11 Nov 2021 19:00:39 -0500
+
+python-pika (0.11.0-5) unstable; urgency=medium
+
+  * Team upload.
+  * Use debhelper-compat instead of debian/compat.
+  * Drop Python 2 support (Closes: #938024).
+  * Bump debhelper compat level to 12.
+  * Bump standards version to 4.4.0.
+  * Enable autopkgtest-pkg-python testsuite instead of own one.
+
+ -- Ondřej Nový <onovy@debian.org>  Fri, 13 Sep 2019 10:35:10 +0200
+
 python-pika (0.11.0-4pexip4) pexip; urgency=medium
 
   * Backwards compatibility for BlockingChannel.exchange_declare()
@@ -106,8 +153,6 @@ python-pika (0.10.0-1pexip4) pexip; urgency=medium
   [ pexbot ]
 
  -- Gregorio Di Stefano <gregorio@pexip.com>  Wed, 02 Oct 2019 15:09:03 +0000
-
-
 
 python-pika (0.10.0-1pexip3) UNRELEASED; urgency=medium
 

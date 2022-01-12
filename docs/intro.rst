@@ -34,7 +34,7 @@ Continuation-Passing Style
 
 Interfacing with Pika asynchronously is done by passing in callback methods you would like to have invoked when a certain event completes. For example, if you are going to declare a queue, you pass in a method that will be called when the RabbitMQ server returns a `Queue.DeclareOk <http://www.rabbitmq.com/amqp-0-9-1-quickref.html#queue.declare>`_ response.
 
-In our example below we use the following four easy steps:
+In our example below we use the following five easy steps:
 
 #. We start by creating our connection object, then starting our event loop.
 #. When we are connected, the *on_connected* method is called. In that method we create a channel.
@@ -58,7 +58,7 @@ Example::
     def on_connected(connection):
         """Called when we are fully connected to RabbitMQ"""
         # Open a channel
-        connection.channel(on_channel_open)
+        connection.channel(on_open_callback=on_channel_open)
 
     # Step #3
     def on_channel_open(new_channel):
@@ -70,7 +70,7 @@ Example::
     # Step #4
     def on_queue_declared(frame):
         """Called when RabbitMQ has told us our Queue has been declared, frame is the response from RabbitMQ"""
-        channel.basic_consume(handle_delivery, queue='test')
+        channel.basic_consume('test', handle_delivery)
 
     # Step #5
     def handle_delivery(channel, method, header, body):
@@ -79,7 +79,7 @@ Example::
 
     # Step #1: Connect to RabbitMQ using the default parameters
     parameters = pika.ConnectionParameters()
-    connection = pika.SelectConnection(parameters, on_connected)
+    connection = pika.SelectConnection(parameters, on_open_callback=on_connected)
 
     try:
         # Loop so we can communicate with RabbitMQ
@@ -122,4 +122,4 @@ Example::
 
 .. rubric:: Footnotes
 
-.. [#f1] "more effective flow control mechanism that does not require cooperation from clients and reacts quickly to prevent the broker from exhausing memory - see http://www.rabbitmq.com/extensions.html#memsup" from http://lists.rabbitmq.com/pipermail/rabbitmq-announce/attachments/20100825/2c672695/attachment.txt
+.. [#f1] "more effective flow control mechanism that does not require cooperation from clients and reacts quickly to prevent the broker from exhausting memory - see http://lists.rabbitmq.com/pipermail/rabbitmq-announce/attachments/20100825/2c672695/attachment.txt
