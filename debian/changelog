@@ -1,3 +1,9 @@
+python-pika (1.2.0-1pexip2) pexip; urgency=medium
+
+  * Initial bullseye build
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Thu, 02 Jun 2022 14:42:50 +0100
+
 python-pika (1.2.0-1pexip1) pexip; urgency=medium
 
   * New upstream version.
