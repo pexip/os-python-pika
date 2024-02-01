@@ -1,3 +1,9 @@
+python-pika (1.2.0-1+pexip24u7) pexip-bookworm; urgency=medium
+
+  * New versioning scheme
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Thu, 01 Feb 2024 16:25:05 +0000
+
 python-pika (1.2.0-1pexip6) pexip-bookworm; urgency=medium
 
   * Bookworm build for product distribution
