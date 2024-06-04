@@ -1,3 +1,18 @@
+python-pika (1.3.2-1) unstable; urgency=medium
+
+  * Team Upload
+  * New upstream version (Closes: #1054171)
+  * Repace Nose by Pytest (Closes: #1018554)
+  * Add pybuild-plugin-pyproject build dependency
+  * Standards-Version: 4.7.0 (routine-update)
+
+  [ Debian Janitor ]
+  * Remove constraints unnecessary since buster (oldstable):
+    + python-pika-doc: Drop versioned constraint on python-pika in Replaces.
+    + python-pika-doc: Drop versioned constraint on python-pika in Breaks.
+
+ -- Alexandre Detiste <tchet@debian.org>  Wed, 05 Jun 2024 00:41:39 +0200
+
 python-pika (1.2.0-1) unstable; urgency=medium
 
   * Team upload.
