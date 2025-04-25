@@ -2,14 +2,14 @@ Pika
 ====
 Pika is a RabbitMQ (AMQP 0-9-1) client library for Python.
 
-|Version| |Python versions| |Travis CI Status| |AppVeyor Status| |Coverage| |License| |Docs|
+|Version| |Python versions| |Actions Status| |Coverage| |License| |Docs|
 
 Introduction
 ------------
 Pika is a pure-Python implementation of the AMQP 0-9-1 protocol including
 RabbitMQ's extensions.
 
-- Python 2.7 and 3.4+ are supported.
+- Supports Python 3.7+ (`1.1.0` was the last version to support 2.7)
 - Since threads aren't appropriate to every situation, it doesn't require
   threads. Pika core takes care not to forbid them, either. The same goes for
   greenlets, callbacks, continuations, and generators. An instance of Pika's
@@ -163,7 +163,7 @@ Connection recovery
 -------------------
 
 Some RabbitMQ clients (Bunny, Java, .NET, Objective-C, Swift) provide a way to
-automatically recover connection, its channels and topology (e.g. queues,
+automatically recover a connection, its channels and topology (e.g. queues,
 bindings and consumers) after a network failure. Others require connection
 recovery to be performed by the application code and strive to make it a
 straightforward process. Pika falls into the second category.
@@ -269,14 +269,11 @@ New non-blocking adapters may be implemented in either of the following ways:
 .. |Python versions| image:: https://img.shields.io/pypi/pyversions/pika.svg
     :target: https://pypi.python.org/pypi/pika
 
-.. |Travis CI Status| image:: https://img.shields.io/travis/pika/pika.svg?
-   :target: https://travis-ci.org/pika/pika
-
-.. |AppVeyor Status| image:: https://ci.appveyor.com/api/projects/status/ql8u3dlls7hxvbqo?svg=true
-   :target: https://ci.appveyor.com/project/gmr/pika
+.. |Actions Status| image:: https://github.com/pika/pika/actions/workflows/main.yaml/badge.svg
+   :target: https://github.com/pika/pika/actions/workflows/main.yaml
 
 .. |Coverage| image:: https://img.shields.io/codecov/c/github/pika/pika.svg?
-   :target: https://codecov.io/github/pika/pika?branch=master
+   :target: https://codecov.io/github/pika/pika?branch=main
 
 .. |License| image:: https://img.shields.io/pypi/l/pika.svg?
    :target: https://pika.readthedocs.io
