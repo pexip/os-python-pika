@@ -8,10 +8,7 @@ export PYBUILD_NAME=pika
 export PYBUILD_TEST_ARGS={dir}/tests/unit/
 
 %:
-	dh $@ --with=python3,sphinxdoc --buildsystem=pybuild
-
-override_dh_installchangelogs:
-	dh_installchangelogs docs/version_history.rst
+	dh $@ --with=sphinxdoc --buildsystem=pybuild
 
 override_dh_auto_clean:
 	rm -rf docs/.build
